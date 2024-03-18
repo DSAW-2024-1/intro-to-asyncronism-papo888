@@ -25,3 +25,8 @@
 | Calidad del código     | 1.5     |
 | Funcionalidad      | 1.5      |
 
+## INFORMACIÓN ESTUDIANTE Y LINK PÁGINA WEB
+- link:https://dsaw-2024-1.github.io/intro-to-asyncronism-papo888/
+- Juan Pablo Parrado Morales
+-id: 291023
+

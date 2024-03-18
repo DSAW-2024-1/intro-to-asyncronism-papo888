@@ -1,9 +1,11 @@
 const txtCharacter = document.getElementById('txt-character');
 const containerCards = document.getElementById('containerCards');
 const btnLoadMore = document.getElementById('btn-load-more');
+const directionFilter = document.getElementById('direction-filter');
+
 let charactersLoaded = 0;
 const charactersPerLoad = 15; 
-const url = "https://thesimpsonsquoteapi.glitch.me/quotes?count=" + charactersPerLoad + "&character";
+const baseUrl = "https://thesimpsonsquoteapi.glitch.me/quotes";
 
 const getApi = async (url) => {
     try {
@@ -43,50 +45,52 @@ const createCards = (character) => {
 }
 
 const generateCharacters = async () => {
+    const url = `${baseUrl}?count=${charactersPerLoad}&skip=${charactersLoaded}`;
     const data = await getApi(url);
     charactersLoaded += data.length;
-    data.map(character => createCards(character));
+    data.forEach(character => createCards(character));
     if (data.length < charactersPerLoad) {
         btnLoadMore.style.display = 'none';
     }
 }
 
 const loadMoreCharacters = async () => {
-    const data = await getApi(url + "&skip=" + charactersLoaded);
+    const url = `${baseUrl}?count=${charactersPerLoad}&skip=${charactersLoaded}`;
+    const data = await getApi(url);
     charactersLoaded += data.length;
-    data.map(character => createCards(character));
+    data.forEach(character => createCards(character));
     if (data.length < charactersPerLoad) {
         btnLoadMore.style.display = 'none';
     }
 }
 
-const generateCharacterByName = async (event) => {
+const getCharacterByName = async () => {
     containerCards.innerHTML = "";
-
-    // Si el campo de búsqueda está vacío, simplemente generamos todos los personajes
-    if (event.target.value.trim() === '') {
-        generateCharacters();
-        return; // Salimos de la función para evitar ejecutar el resto del código
-    }
-
-    // Construye la URL para buscar por el nombre del personaje
-    const searchUrl = `https://thesimpsonsquoteapi.glitch.me/quotes?character=${event.target.value}`;
-
-    try {
-        // Realiza una solicitud a la API con la URL construida
-        const data = await getApi(searchUrl);
-
-        // Crea las cartas para cada personaje en los datos devueltos por la API
-        data.forEach(character => {
-            createCards(character);
-        });
-    } catch (error) {
-        console.error('Error al obtener datos de la API:', error);
-    }
+    const searchValue = txtCharacter.value.trim();
+    const url = `${baseUrl}?character=${searchValue}`;
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const data = await getApi(url);
+    data.forEach(character => createCards(character));
 }
 
+const filterCharactersByDirection = async (direction) => {
+    containerCards.innerHTML = "";
+    const searchValue = txtCharacter.value.trim();
+    let url = `${baseUrl}?characterDirection=${direction}`;
+    
+    if (direction === 'left' || direction === 'right') {
+        url += `&count=${charactersPerLoad}`;
+    }
+    
+    const data = await getApi(url);
+    data.forEach(character => createCards(character));
+}
 
 
 btnLoadMore.addEventListener('click', loadMoreCharacters);
 window.addEventListener('DOMContentLoaded', generateCharacters);
-txtCharacter.addEventListener('keyup',generateCharacterByName);
+txtCharacter.addEventListener('keyup', getCharacterByName);
+directionFilter.addEventListener('change', (event) => {
+    const selectedDirection = event.target.value;
+    filterCharactersByDirection(selectedDirection);
+});

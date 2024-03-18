@@ -74,7 +74,7 @@ main{
 .card-character{
     width: 20rem;
     height: 10rem;
-    background-color: #add4cb;
+    background: linear-gradient(90deg,#ffffff, #53b5d5);
     border: groove 5px bisque ;
     margin: 1rem;
     display: flex;
@@ -102,7 +102,7 @@ main{
 .description-card > p {
     font-size: 1.5rem;
     text-align: center;
-    color: #fff;
+    color: #676767;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     overflow: hidden;
@@ -125,4 +125,23 @@ main{
 #btn-load-more:hover {
     background-color: #FED330;
     color: #000000;
+}
+
+
+#direction-filter {
+    margin-top: 1.5rem;
+    font-family: "Madimi One", sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 2px solid #FED330;
+    border-radius: 5px;
+    background-color: #559385;
+    color: black; /* Texto blanco */
+    cursor: pointer;
+}
+
+
+#direction-filter:hover {
+    background-color: #e7cb19; 
+    border-color: #000000; 
 }
