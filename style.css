@@ -74,8 +74,8 @@ main{
 .card-character{
     width: 20rem;
     height: 10rem;
-    background-color: #559385;
-    border: groove 5px #3affde ;
+    background-color: #add4cb;
+    border: groove 5px bisque ;
     margin: 1rem;
     display: flex;
 }
