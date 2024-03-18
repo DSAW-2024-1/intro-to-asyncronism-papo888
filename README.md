@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/IzcH6WD-)
 # Desarrollo de Aplicaciones Web
 ## Introducción al Asíncronismo
 
@@ -23,4 +24,9 @@
 | Diseño             | 1       |
 | Calidad del código     | 1.5     |
 | Funcionalidad      | 1.5      |
+
+## INFORMACIÓN ESTUDIANTE Y LINK PÁGINA WEB
+- link:https://dsaw-2024-1.github.io/intro-to-asyncronism-papo888/
+- Juan Pablo Parrado Morales
+-id: 291023
 
