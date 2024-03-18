@@ -89,7 +89,7 @@ const filterCharactersByDirection = async (direction) => {
 
 btnLoadMore.addEventListener('click', loadMoreCharacters);
 window.addEventListener('DOMContentLoaded', generateCharacters);
-txtCharacter.addEventListener('keyup', getCharacterByName);
+txtCharacter.addEventListener('input', getCharacterByName);
 directionFilter.addEventListener('change', (event) => {
     const selectedDirection = event.target.value;
     filterCharactersByDirection(selectedDirection);
